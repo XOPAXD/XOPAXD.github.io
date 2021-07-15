@@ -1,0 +1,55 @@
+<div class="container">
+    <h1>Visualizar Ordem de Serviço</h1>
+    <div class="labels">
+        <mat-form-field appearance="fill">
+            <mat-label>Selecione um técnico</mat-label>
+            <mat-select class="mat-elevation-z8" [(ngModel)]="selTecnico" [(value)]="os.tecnico" disabled>
+                <mat-option *ngFor="let tec of tecnicos" value="{{tec.id}}">{{tec.nome}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Selecione um cliente</mat-label>
+            <mat-select class="mat-elevation-z8" [(ngModel)]="selCliente" [(value)]="os.cliente" disabled>
+                <mat-option *ngFor="let cli of clientes" value="{{cli.id}}">{{cli.nome}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Selecione um prioridade</mat-label>
+            <mat-select class="mat-elevation-z8" [(ngModel)]="selPrioridade" [(value)]="os.prioridade" disabled>
+                <mat-option value="0">BAIXA</mat-option>
+                <mat-option value="1">MÉDIA</mat-option>
+                <mat-option value="2">ALTA</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Selecione um status</mat-label>
+            <mat-select class="mat-elevation-z8" [(ngModel)]="selStatus" [(value)]="os.status" disabled>
+                <mat-option value="0">ABERTO</mat-option>
+                <mat-option value="1" selected> EM ANDAMENTO</mat-option>
+                <mat-option value="2">ENCERRADO</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+    </div>
+
+    <form class="form">
+        <mat-form-field class="full-width">
+            <mat-label>Observações</mat-label>
+            <textarea [(ngModel)]="os.observacoes" name="observacoes" class="mat-elevation-z8" matInput maxlength="255" disabled></textarea>
+        </mat-form-field>
+    </form>
+
+
+
+    <mat-grid-list cols="2" rowHeight="10:1">
+        <mat-grid-tile><b>Data Abertura:</b>{{ os.dataAbertura}}</mat-grid-tile>
+        <mat-grid-tile><b>Data Fechamento:</b>{{ os.dataFechamento}}</mat-grid-tile>
+    </mat-grid-list>
+
+    <button (click)="update()" class="mat-elevation-z8" mat-stroked-button color="accent" disabled>Atualizar</button>
+    <button (click)="cancel()" class="mat-elevation-z8" mat-stroked-button color="warn">Voltar</button>
+</div>
